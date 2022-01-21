@@ -40,21 +40,44 @@ namespace BankEncapsulationExercise
                         {
                             Console.WriteLine("How much would you like to withdraw?:");
                             check1 = double.TryParse(Console.ReadLine(), out amountWithdraw);
-                            if (!check)
+                            if (!check1)
                             {
-                                Console.WriteLine();
+                                Console.WriteLine("I don't think I understand try again.\n");
                             }
                         }
                         NewAccount.Withdraw(amountWithdraw);
-                        Console.WriteLine();
+                        Console.WriteLine("\nIf you would like to perform another operator press 1 / To exit press enter.");
+                        if (Console.ReadLine() != "1")
+                        {
+                            check = true;
+                        }
                         break;
                     case 2:
-                        Console.WriteLine("How much would you like to deposit?:");
-                        var amountDeposit = double.Parse(Console.ReadLine());
+                        bool check2 = false;
+                        double amountDeposit = 0;
+                        while (!check2)
+                        {
+                            Console.WriteLine("How much would you like to deposit?:");
+                            check2 = double.TryParse(Console.ReadLine(), out amountDeposit);
+                            if (!check2)
+                            {
+                                Console.WriteLine("I don't think I understand try again.\n");
+                            }
+                        }
                         NewAccount.Deposit(amountDeposit);
+                        Console.WriteLine("\nIf you would like to perform another operator press 1 / To exit press enter.");
+                        if (Console.ReadLine() != "1")
+                        {
+                            check = true;
+                        }
                         break;
                     case 3:
                         Console.WriteLine($"\nYour current balance is: {NewAccount.GetBalance()}\n");
+                        Console.WriteLine("\nIf you would like to perform another operator press 1 / To exit press enter.");
+                        if (Console.ReadLine() != "1")
+                        {
+                            check = true;
+                        }
                         break;
                     default:
                         Console.WriteLine("\nI'm not sure I understand. Taking back to Main Hub\n");
